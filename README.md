@@ -4,7 +4,7 @@
 
 🔭 Currently working on tools that simplify scientific research.
 
-🌱 Learning and experimenting with Machine Learning and Algorithms.
+🌱 Learning and experimenting with Automation, Machine Learning and Algorithms.
 
 💬 Ask me about Python, Java, C, C++, C#.
 
