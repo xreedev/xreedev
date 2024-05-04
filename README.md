@@ -1,16 +1,15 @@
-### Hi there 👋
+👋 Hi there! I'm Sreedev 🚀
 
-<!--
-**xreedev/xreedev** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+👨‍💻 Btech Graduate | Open Source Enthusiast | Tech Geek
 
-Here are some ideas to get you started:
+🔭 Currently working on tools that simplify scientific research.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+🌱 Learning and experimenting with Machine Learning and Algorithms.
+
+💬 Ask me about Python, Java, C, C++, C#.
+
+📫 How to reach me: xreedev@gmail.com
+
+⚡ Fun fact: I love designing and athletics!
+
+Good day! 😄
