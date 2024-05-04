@@ -1,6 +1,6 @@
 👋 Hi there! I'm Sreedev 🚀
 
-👨‍💻 Btech Graduate | Open Source Enthusiast | Tech Geek
+👨‍💻 Btech Graduate | Open Source Enthusiast | Developer-Designer
 
 🔭 Currently working on tools that simplify scientific research.
 
