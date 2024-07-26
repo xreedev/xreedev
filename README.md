@@ -31,4 +31,7 @@
 
 [![Sreedev's GitHub stats](https://github-readme-stats.vercel.app/api?username=xreedev&show_icons=true&theme=radical)](https://github.com/xreedev)
 
+[![Sreedev's GitHub stats](https://komarev.com/ghpvc/?username=xreedev)](https://github.com/xreedev)
+
+
 Feel free to check out my projects and contributions. 
