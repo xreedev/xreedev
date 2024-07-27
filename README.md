@@ -1,8 +1,8 @@
-# This is Sreedev 🚀
+# This is Sreedev.
 
-👨‍💻 **Btech Graduate | Open Source Enthusiast | Programmer**
+ **Btech Graduate | Open Source Enthusiast | Programmer**
 
-🔭 Like programming everything from web projects to embedded systems and everything in between.
+ Like programming everything from web projects to embedded systems and everything in between.
 
 📫 How to reach me: [xreedev@gmail.com](mailto:xreedev@gmail.com)
 
