@@ -2,7 +2,7 @@
 
  **Btech Graduate | Open Source Enthusiast | Programmer**
 
- Like programming everything from web projects to embedded systems and everything in between.
+ Programming everything from web projects to embedded systems and everything in between.
 
 📫 How to reach me: [xreedev@gmail.com](mailto:xreedev@gmail.com)
 
