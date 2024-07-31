@@ -10,7 +10,7 @@
 ---
 
 
-## Most Used Languages
+## Languages
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xreedev&layout=compact&theme=radical)](https://github.com/xreedev)
 
