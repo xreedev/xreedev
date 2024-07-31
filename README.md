@@ -14,6 +14,10 @@
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xreedev&layout=compact&theme=radical)](https://github.com/xreedev)
 
+<!-- [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xreedev&layout=compact&theme=radical&langs_count=10)](https://github.com/xreedev)-->
+
+
+
 ## My Tech Stack
 
 ![Java](https://img.shields.io/badge/Java-007396?style=flat&logo=java&logoColor=white) ![Python](https://img.shields.io/badge/Python-306998?style=flat&logo=python&logoColor=white) ![C](https://img.shields.io/badge/C-A8B9CC?style=flat&logo=c&logoColor=white) ![C++](https://img.shields.io/badge/C%2B%2B-F34B7F?style=flat&logo=c%2B%2B&logoColor=white) ![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white) ![Spring](https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=spring&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black) ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)
