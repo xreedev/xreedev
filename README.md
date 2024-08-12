@@ -12,7 +12,7 @@
 
 ## Languages
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xreedev&layout=compact&theme=radical)](https://github.com/xreedev)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xreedev&layout=compact&theme=radical&langs_count=10)](https://github.com/xreedev)
 
 <!-- [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=xreedev&layout=compact&theme=radical&langs_count=10)](https://github.com/xreedev)-->
 
