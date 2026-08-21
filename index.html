@@ -40,6 +40,12 @@ a{color:inherit}
 .btn-resume{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.03em;text-decoration:none;color:#fff;background:var(--accent);padding:9px 16px;border-radius:6px;transition:opacity .15s;white-space:nowrap}
 .btn-resume:hover{opacity:.85}
 .btn-resume svg{width:14px;height:14px;flex-shrink:0}
+.nav-toggle{display:none;background:none;border:none;padding:8px;margin:-8px;color:var(--text);cursor:pointer}
+.nav-toggle svg{width:22px;height:22px;display:block}
+.nav-toggle .icon-close{display:none}
+.nav-toggle.open .icon-menu{display:none}
+.nav-toggle.open .icon-close{display:block}
+.mobile-menu{display:none}
 
 /* LAYOUT */
 .layout{display:flex;max-width:1440px;margin:0 auto;align-items:flex-start}
@@ -64,6 +70,11 @@ a{color:inherit}
 .road-desc a:hover{text-decoration:underline}
 .road-title a{color:inherit;text-decoration:none}
 .road-title a:hover{color:var(--accent);text-decoration:underline}
+.road-minor{opacity:.6}
+.road-minor .road-title{font-size:.9em;font-weight:500}
+.road-minor .road-desc{font-size:.88em}
+.road-major .road-title{font-weight:700}
+.road-major::before{transform:scale(1.4)}
 
 /* CONTENT SECTIONS */
 section{padding-bottom:64px;scroll-margin-top:calc(var(--header-h) + 16px)}
@@ -108,38 +119,35 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
 }
 @media(max-width:640px){
   .header-inner{
-    grid-template-columns:1fr 1fr;
-    grid-template-areas:"brand brand" "nav actions";
-    row-gap:10px;
+    position:relative;
+    grid-template-columns:auto 1fr auto;
+    gap:8px;
     padding:10px 16px;
   }
-  .brand-wrap{grid-area:brand}
-  .brand{font-size:17px}
+  .nav-toggle{display:inline-flex;align-items:center;justify-self:start}
+  .main-nav{display:none}
+  .brand-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  .brand{font-size:16px}
   .brand-role{font-size:10px}
-  .main-nav{grid-area:nav;justify-self:start;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .main-nav::-webkit-scrollbar{display:none}
-  .main-nav ul{gap:16px;padding-right:8px}
-  .main-nav a{font-size:11px;white-space:nowrap}
-  .header-actions{grid-area:actions;justify-self:end;gap:10px}
-  .icon-link svg{width:17px;height:17px}
-  .btn-resume{padding:8px 12px;font-size:11px}
+  .header-actions{display:none}
+  .mobile-menu.open{display:flex}
+  .mobile-menu{flex-direction:column;background:var(--surface);border-top:1px solid var(--border)}
+  .mobile-menu nav ul{list-style:none;display:flex;flex-direction:column;padding:8px 16px 0}
+  .mobile-menu nav a{display:block;padding:14px 4px;font-size:15px;font-weight:600;color:var(--text);text-decoration:none;border-bottom:1px solid var(--border)}
+  .mobile-menu nav a.active{color:var(--accent)}
+  .mobile-menu-actions{display:flex;align-items:center;gap:18px;padding:16px}
+  .mobile-menu-actions .icon-link svg{width:20px;height:20px}
+  .mobile-menu-actions .btn-resume{margin-left:auto}
   section{padding-bottom:48px}
   h2{margin-bottom:18px}
   .proj-grid{grid-template-columns:1fr;gap:14px}
   .proj-body{padding:16px}
   .sidebar{padding:24px 20px 20px}
   .content{padding:24px 20px}
-  section,.proj{scroll-margin-top:130px}
 }
 @media(max-width:400px){
   .header-inner{padding:10px 12px}
-  .brand{font-size:16px}
-  .resume-label{display:none}
-  .btn-resume{padding:9px 10px}
-  .btn-resume svg{width:15px;height:15px}
-  .header-actions{gap:8px}
-  .icon-link{padding:5px;margin:-5px}
-  .icon-link svg{width:16px;height:16px}
+  .brand{font-size:15px}
   .proj-tags{gap:5px}
   .proj-tag{font-size:9px;padding:2px 6px}
 }
@@ -149,6 +157,10 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
 
 <header class="site-header">
   <div class="header-inner">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
     <nav class="main-nav">
       <ul>
         <li><a href="#projects">Projects</a></li>
@@ -176,6 +188,30 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
       </a>
     </div>
   </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <nav>
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-menu-actions">
+      <a href="https://github.com/xreedev" target="_blank" class="icon-link" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/sreedevts" target="_blank" class="icon-link" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:xreedev@gmail.com" class="icon-link" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" fill="none" stroke="none"/><path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/></svg>
+      </a>
+      <a href="images/assets/sreedev_ts_resume.pdf" download class="btn-resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+        <span class="resume-label">Resume</span>
+      </a>
+    </div>
+  </div>
 </header>
 
 <div class="layout">
@@ -187,56 +223,83 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
 
     <div class="about-sub">My journey</div>
     <div class="roadmap">
-      <div class="road-item">
-        <div class="road-date">2018</div>
-        <div class="road-title">Chose Computer Science</div>
-        <div class="road-desc">CBSE Higher Secondary at Saraswathi Vidyalaya. Wrote my first program, in C.</div>
+
+      <!-- CONTEXT TIER -->
+      <div class="road-item road-minor">
+        <div class="road-date">2018 — 2020</div>
+        <div class="road-title">Picked the path</div>
+        <div class="road-desc">Computer Science at Saraswathi Vidyalaya, then B.Tech CSE at
+        Marian Engineering College, Kazhakootam.</div>
       </div>
-      <div class="road-item">
-        <div class="road-date">2020</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/marian_emblem.png" alt="">Started B.Tech, CSE</div>
-        <div class="road-desc">Marian Engineering College, Kazhakootam.</div>
+
+      <div class="road-item road-minor">
+        <div class="road-date">2022</div>
+        <div class="road-title">Built my first evaluated system</div>
+        <div class="road-desc">Replaced a sensor-driven approach with a computed algorithm —
+        my first time choosing computation over the obvious hardware answer, and defending
+        the choice. <a href="#proj-solar">Details →</a></div>
       </div>
-      <div class="road-item">
+
+      <div class="road-item road-minor">
         <div class="road-date">2023</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/keltron-favicon.png" alt="">Internship — Keltron</div>
-        <div class="road-desc">First taste of a production codebase, outside the classroom.</div>
+        <div class="road-title"><img class="road-logo" src="images/logos/keltron-favicon.png" alt="">First production codebase</div>
+        <div class="road-desc">Internship at Keltron. Learned what code looks like when other
+        people depend on it.</div>
       </div>
-      <div class="road-item">
-        <div class="road-date">Semester 6</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/marian_emblem.png" alt=""><a href="#proj-solar">Built a sun-tracking solar panel</a></div>
-        <div class="road-desc">ESP32 and C, replacing an LDR sensor with a computed sun-position algorithm — the only hardware project in my batch that semester. Built with a team.</div>
+
+      <div class="road-item road-minor">
+        <div class="road-date">2024</div>
+        <div class="road-title">First system with a research problem in it</div>
+        <div class="road-desc">Final-year team project: a scientific-paper summarizer that
+        generates slide decks — my first work on unstructured language input.
+        <a href="https://github.com/xreedev/Research-Asist-Tool" target="_blank">GitHub →</a></div>
       </div>
-      <div class="road-item">
-        <div class="road-date">Final year</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/marian_emblem.png" alt=""><a href="#proj-research">Research Assist Tool</a></div>
-        <div class="road-desc">Team final-year project: a scientific-paper summarizer that also generates a slide deck. <a href="https://github.com/xreedev/Research-Asist-Tool" target="_blank">View on GitHub →</a></div>
-      </div>
+
+      <!-- STANDARD TIER -->
       <div class="road-item">
         <div class="road-date">Jun 2024</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt="">Joined Simplogics full-time</div>
-        <div class="road-desc">Built an <a href="#exp-npm">internal npm package</a> for JSON-to-Excel conversion, then won an internal hackathon building <a href="#exp-boardflex">Board Flex</a>, a gamified platform for co-curricular activities.</div>
+        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt="">Joined Simplogics</div>
+        <div class="road-desc">Started on internal tooling — a JSON-to-Excel npm package still
+        used across projects. Won the internal hackathon a few months in, 1st of 15 teams,
+        building <a href="#exp-boardflex">Board Flex</a> in 16 hours.</div>
       </div>
-      <div class="road-item">
+
+      <!-- MAJOR TIER -->
+      <div class="road-item road-major">
         <div class="road-date">Late 2024</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt=""><a href="#exp-respire">Started the AI module</a></div>
-        <div class="road-desc">Applied tree structures — BST, BFS, DFS — and a Monte Carlo simulation for bottleneck detection to real production problems, before eventually taking ownership of the AI module with direct client communication.</div>
+        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt=""><a href="#exp-respire">Moved from features to modelling</a></div>
+        <div class="road-desc">Started on the hospital analysis engine. Modelled patient care
+        pathways as graphs, traversing them with BFS and DFS in production, alongside Monte
+        Carlo simulation and Erlang-C queueing for capacity bottleneck detection. Ended up
+        owning the module, client conversations included.</div>
       </div>
-      <div class="road-item">
+
+      <div class="road-item road-major">
         <div class="road-date">2025</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt=""><a href="#exp-nlp-chatbot">Built the NER module</a></div>
-        <div class="road-desc">spaCy, PyTorch, and RASA, with a self-learning harness for training data and lexicon normalization — architected across 30+ pipeline components.</div>
+        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt=""><a href="#exp-nlp-chatbot">Made noisy language reliable</a></div>
+        <div class="road-desc">Built the NER and understanding layer behind the clinical
+        chatbot — spaCy, PyTorch and Rasa across 30+ pipeline components, with lexicon
+        normalization and a self-learning loop that turns corrected production queries back
+        into training data. 125,000+ queries resolved to SQL.</div>
       </div>
-      <div class="road-item">
+
+      <div class="road-item road-major">
         <div class="road-date">2025</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt=""><a href="#exp-mom-data">Built an MCP server</a></div>
-        <div class="road-desc">Connected a dashboard API to tool calls, running in production.</div>
+        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt=""><a href="#exp-mom-data">Shipped an MCP server, written from scratch</a></div>
+        <div class="road-desc">Not adapted from a template — a full implementation exposing
+        15+ tools over FastAPI to LLM clients, deployed across multiple European hospitals
+        under GDPR. Now serves 15,000+ analytics queries, at 45% lower token cost through
+        RAG-based tool selection and model routing.</div>
       </div>
-      <div class="road-item">
-        <div class="road-date">2025 — Present</div>
-        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt="">Infra and evaluation</div>
-        <div class="road-desc">Set up Jenkins and Grafana, and built a custom evaluation benchmark for the NER module, the MCP server, and the AI module as a whole.</div>
+
+      <div class="road-item road-major">
+        <div class="road-date">2026 — Present</div>
+        <div class="road-title"><img class="road-logo" src="images/logos/simplogics.png" alt="">Made the whole thing measurable</div>
+        <div class="road-desc">Built a custom evaluation benchmark scoring NER precision and
+        recall, MCP tool-selection accuracy, and end-to-end AI behaviour on every release —
+        plus the CI and observability around it: Jenkins, Grafana, Prometheus, Loki.</div>
       </div>
+
     </div>
 
   </aside>
@@ -438,11 +501,27 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
 
 <script>
 const sections=document.querySelectorAll('main section[id]');
-const navLinks=document.querySelectorAll('.main-nav a');
+const navLinks=document.querySelectorAll('.main-nav a, .mobile-menu nav a');
 window.addEventListener('scroll',()=>{
   let cur='';
   sections.forEach(s=>{if(window.scrollY>=s.offsetTop-140)cur=s.id});
   navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur)});
+});
+
+// MOBILE MENU
+const navToggle=document.getElementById('navToggle');
+const mobileMenu=document.getElementById('mobileMenu');
+navToggle.addEventListener('click',()=>{
+  const isOpen=mobileMenu.classList.toggle('open');
+  navToggle.classList.toggle('open',isOpen);
+  navToggle.setAttribute('aria-expanded',isOpen);
+});
+mobileMenu.querySelectorAll('a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    mobileMenu.classList.remove('open');
+    navToggle.classList.remove('open');
+    navToggle.setAttribute('aria-expanded','false');
+  });
 });
 
 // TAG COLORS + LOGOS
