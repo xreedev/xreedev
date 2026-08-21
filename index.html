@@ -34,11 +34,12 @@ a{color:inherit}
 .main-nav a:hover{color:var(--text)}
 .main-nav a.active{color:var(--accent)}
 .header-actions{justify-self:end;display:flex;align-items:center;gap:16px}
-.icon-link{color:var(--muted);display:inline-flex;transition:color .15s}
+.icon-link{color:var(--muted);display:inline-flex;padding:6px;margin:-6px;transition:color .15s}
 .icon-link:hover{color:var(--accent)}
 .icon-link svg{width:18px;height:18px}
-.btn-resume{flex-shrink:0;font-size:12px;font-weight:600;letter-spacing:.03em;text-decoration:none;color:#fff;background:var(--accent);padding:9px 16px;border-radius:6px;transition:opacity .15s;white-space:nowrap}
+.btn-resume{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.03em;text-decoration:none;color:#fff;background:var(--accent);padding:9px 16px;border-radius:6px;transition:opacity .15s;white-space:nowrap}
 .btn-resume:hover{opacity:.85}
+.btn-resume svg{width:14px;height:14px;flex-shrink:0}
 
 /* LAYOUT */
 .layout{display:flex;max-width:1440px;margin:0 auto;align-items:flex-start}
@@ -65,7 +66,7 @@ a{color:inherit}
 .road-title a:hover{color:var(--accent);text-decoration:underline}
 
 /* CONTENT SECTIONS */
-section{padding-bottom:64px}
+section{padding-bottom:64px;scroll-margin-top:calc(var(--header-h) + 16px)}
 section:last-of-type{padding-bottom:0}
 h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;font-weight:600}
 
@@ -103,12 +104,44 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
   .layout{flex-direction:column}
   .sidebar{position:static;width:100%;max-height:none;overflow-y:visible;padding:32px 24px 24px;border-bottom:1px solid var(--border)}
   .content{padding:32px 24px}
+  .proj-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
 }
 @media(max-width:640px){
-  .header-inner{padding:0 20px}
-  .main-nav{display:none}
-  .header-actions{gap:10px}
+  .header-inner{
+    grid-template-columns:1fr 1fr;
+    grid-template-areas:"brand brand" "nav actions";
+    row-gap:10px;
+    padding:10px 16px;
+  }
+  .brand-wrap{grid-area:brand}
+  .brand{font-size:17px}
+  .brand-role{font-size:10px}
+  .main-nav{grid-area:nav;justify-self:start;min-width:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .main-nav::-webkit-scrollbar{display:none}
+  .main-nav ul{gap:16px;padding-right:8px}
+  .main-nav a{font-size:11px;white-space:nowrap}
+  .header-actions{grid-area:actions;justify-self:end;gap:10px}
+  .icon-link svg{width:17px;height:17px}
   .btn-resume{padding:8px 12px;font-size:11px}
+  section{padding-bottom:48px}
+  h2{margin-bottom:18px}
+  .proj-grid{grid-template-columns:1fr;gap:14px}
+  .proj-body{padding:16px}
+  .sidebar{padding:24px 20px 20px}
+  .content{padding:24px 20px}
+  section,.proj{scroll-margin-top:130px}
+}
+@media(max-width:400px){
+  .header-inner{padding:10px 12px}
+  .brand{font-size:16px}
+  .resume-label{display:none}
+  .btn-resume{padding:9px 10px}
+  .btn-resume svg{width:15px;height:15px}
+  .header-actions{gap:8px}
+  .icon-link{padding:5px;margin:-5px}
+  .icon-link svg{width:16px;height:16px}
+  .proj-tags{gap:5px}
+  .proj-tag{font-size:9px;padding:2px 6px}
 }
 </style>
 </head>
@@ -137,7 +170,10 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
       <a href="mailto:xreedev@gmail.com" class="icon-link" aria-label="Email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" fill="none" stroke="none"/><path d="M3 6h18v12H3z"/><path d="M3 6l9 7 9-7"/></svg>
       </a>
-      <a href="images/assets/sreedev_ts_resume.pdf" download class="btn-resume">Download Resume</a>
+      <a href="images/assets/sreedev_ts_resume.pdf" download class="btn-resume">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 19h16"/></svg>
+        <span class="resume-label">Download Resume</span>
+      </a>
     </div>
   </div>
 </header>
