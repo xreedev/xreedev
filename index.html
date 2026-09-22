@@ -100,6 +100,33 @@ h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute
 .proj-tag svg{width:10px;height:10px;flex-shrink:0}
 .proj a.proj-link{font-size:12px;text-decoration:none;color:var(--accent);font-weight:600;margin-top:auto}
 .proj a.proj-link:hover{text-decoration:underline}
+.proj-img-ph{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent-soft),#fff)}
+.proj-img-ph svg{width:40px;height:40px;color:var(--accent);opacity:.75}
+.proj[data-case]{cursor:pointer;transition:border-color .15s,transform .15s}
+.proj[data-case]:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj-case-hint{font-size:11px;color:var(--muted);margin-top:6px}
+
+/* REVEAL ANIMATIONS */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+
+/* CASE STUDY MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(15,16,18,.6);display:none;align-items:flex-start;justify-content:center;padding:60px 20px;z-index:100;overflow-y:auto}
+.modal-overlay.open{display:flex}
+.modal-box{background:var(--surface);border-radius:12px;max-width:720px;width:100%;padding:36px 32px 40px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:modalIn .22s ease}
+@keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:18px;right:18px;background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;border-radius:6px;transition:color .15s,background .15s}
+.modal-close:hover{color:var(--text);background:var(--accent-soft)}
+.modal-close svg{width:20px;height:20px;display:block}
+.modal-title{font-size:21px;font-weight:700;margin:10px 0 4px}
+.modal-sub{font-size:13px;color:var(--muted);margin-bottom:18px}
+.modal-body p{color:var(--muted);font-size:13.5px;line-height:1.75;margin-bottom:14px}
+.modal-body strong{color:var(--text)}
+.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+@media(max-width:640px){
+  .modal-box{padding:28px 20px 32px}
+  .modal-overlay{padding:24px 12px}
+}
 
 /* CONTACT */
 #contact p{color:var(--muted);max-width:56ch;margin-bottom:20px}
@@ -310,7 +337,41 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
       <h2>Projects</h2>
 
       <div class="proj-grid">
-        <div class="proj">
+        <div class="proj reveal" id="proj-probe" data-case="probe">
+          <div class="proj-img-ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4.5v9L12 20l-8-4.5v-9L12 2z"/><path d="M12 2v18M4 6.5l8 4.5 8-4.5M4 15.5l8-4.5 8 4.5"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-cat cat-hackathon">Forge the Future 2026 — Finalist</span>
+            <div class="proj-head">
+              <span class="proj-title">PROBE</span>
+            </div>
+            <p>A privacy-safe collective operational memory for software vendors — sanitized incident fingerprints flow into a shared "HIVE" so the 500th site never rediscovers a fix already found at the first. Elastic ML + Comprehend redaction on the edge, Bedrock (Claude) reasoning, Jira as the state machine. Finalist, Elastic × AWS Forge the Future 2026, Bengaluru.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Elasticsearch</span><span class="proj-tag">Elastic ML</span><span class="proj-tag">AWS Bedrock</span><span class="proj-tag">Comprehend</span><span class="proj-tag">MCP</span><span class="proj-tag">Agentic AI</span>
+            </div>
+            <span class="proj-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="proj reveal" id="proj-mudra" data-case="mudra">
+          <div class="proj-img-ph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12V5.5a1.5 1.5 0 0 1 3 0V11"/><path d="M11 10.5V4a1.5 1.5 0 0 1 3 0v7"/><path d="M14 10.5V5.5a1.5 1.5 0 0 1 3 0V13"/><path d="M17 8.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-2a7 7 0 0 1-6-4l-2.2-3.6a1.4 1.4 0 0 1 2.3-1.6L8 13"/></svg>
+          </div>
+          <div class="proj-body">
+            <span class="proj-cat cat-hackathon">iQOO City Battles, Chennai</span>
+            <div class="proj-head">
+              <span class="proj-title">MUDRA+</span>
+            </div>
+            <p>An on-device ASL input accelerator built on an iQOO 15 — sign two or three glosses, get candidate English sentences, the phone speaks them into a call. MediaPipe landmark geometry (no classifier) for instant sign recognition, a local Qwen2.5-3B only for unseen sequences, and a dual-ported translation-memory engine for sub-microsecond recall.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">MediaPipe</span><span class="proj-tag">On-Device LLM</span><span class="proj-tag">Whisper</span><span class="proj-tag">Kotlin</span><span class="proj-tag">React Native</span>
+            </div>
+            <span class="proj-link">Read case study →</span>
+          </div>
+        </div>
+
+        <div class="proj reveal">
           <img class="proj-img" src="images/nyaybandh.png" alt="NyayBandh preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-hackathon">Hackathon</span>
@@ -325,7 +386,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj" id="proj-research">
+        <div class="proj reveal" id="proj-research">
           <img class="proj-img" src="images/research%20assist%20tool.png" alt="Research Assist Tool preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-college">College</span>
@@ -341,7 +402,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj">
+        <div class="proj reveal">
           <img class="proj-img" src="images/sql_orchetsrate.png" alt="SQL Orchestrator Agent preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-self">Self Project</span>
@@ -357,7 +418,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj">
+        <div class="proj reveal">
           <img class="proj-img" src="images/second%20brain.png" alt="Second Brain preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-self">Self Project</span>
@@ -372,7 +433,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj">
+        <div class="proj reveal">
           <img class="proj-img" src="images/certificate_generator.png" alt="Automated Certificate Generator preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-self">Self Project</span>
@@ -388,7 +449,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj" id="proj-solar">
+        <div class="proj reveal" id="proj-solar">
           <img class="proj-img" src="images/sun_tracking_solar_panel.png" alt="Sun-Tracking Solar Panel preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-college">College</span>
@@ -409,7 +470,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
       <h2>Experience</h2>
 
       <div class="proj-grid">
-        <div class="proj" id="exp-mom-data">
+        <div class="proj reveal" id="exp-mom-data">
           <img class="proj-img" src="images/ismoetric%20network%20hub.png" alt="MOM AI Secure Data Analysis Tool preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-simplogics">Simplogics</span>
@@ -423,7 +484,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj" id="exp-nlp-chatbot">
+        <div class="proj reveal" id="exp-nlp-chatbot">
           <img class="proj-img" src="images/from%20chat%20to%20strcutred.png" alt="MOM AI Secure NLP Chatbot preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-simplogics">Simplogics</span>
@@ -437,7 +498,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj" id="exp-respire">
+        <div class="proj reveal" id="exp-respire">
           <img class="proj-img" src="images/probablisitic%20nertwrk%20path.png" alt="RESPIRE Analysis Module preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-simplogics">Simplogics</span>
@@ -451,7 +512,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj" id="exp-npm">
+        <div class="proj reveal" id="exp-npm">
           <img class="proj-img" src="images/internal_npm_package.png" alt="Internal NPM Package preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-simplogics">Simplogics</span>
@@ -465,7 +526,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
           </div>
         </div>
 
-        <div class="proj" id="exp-boardflex">
+        <div class="proj reveal" id="exp-boardflex">
           <img class="proj-img" src="images/boardflex.png" alt="Board Flex preview" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-simplogics">Simplogics</span>
@@ -497,6 +558,19 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
     </footer>
 
   </main>
+</div>
+
+<div class="modal-overlay" id="caseStudyOverlay" role="dialog" aria-modal="true" aria-labelledby="caseStudyTitle">
+  <div class="modal-box">
+    <button class="modal-close" id="caseStudyClose" aria-label="Close case study">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <span class="proj-cat" id="caseStudyCat"></span>
+    <div class="modal-title" id="caseStudyTitle"></div>
+    <div class="modal-sub" id="caseStudySub"></div>
+    <div class="modal-body" id="caseStudyBody"></div>
+    <div class="modal-tags" id="caseStudyTags"></div>
+  </div>
 </div>
 
 <script>
@@ -587,6 +661,117 @@ document.querySelectorAll('.proj-tag').forEach(el=>{
   el.style.borderColor='transparent';
   if(style.icon)el.insertAdjacentHTML('afterbegin',style.icon);
 });
+
+// SCROLL-IN REVEAL ANIMATIONS
+const revealEls=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const revealObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  revealEls.forEach(el=>revealObserver.observe(el));
+}else{
+  revealEls.forEach(el=>el.classList.add('in-view'));
+}
+
+// CASE STUDIES
+function mdToHtml(md){
+  return md.trim().split(/\n\s*\n/).map(block=>{
+    const escaped=block.trim()
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+    return '<p>'+escaped+'</p>';
+  }).join('');
+}
+
+const caseStudies={
+  probe:{
+    cat:'cat-hackathon',
+    catLabel:'Forge the Future 2026 — Finalist',
+    title:'PROBE',
+    sub:'Elastic × AWS Forge the Future 2026, Bengaluru finale',
+    tags:['Elasticsearch','Elastic ML','ELSER','Agent Builder','AWS Bedrock','Comprehend','IoT Core','Greengrass','AgentCore','MCP'],
+    body:`PROBE is a privacy-safe **collective operational memory** for software vendors — a shared "HIVE" that learns incident→fix patterns across a vendor's entire deployment fleet, so the 500th site never rediscovers a problem already solved at the first.
+
+**The problem.** A vendor ships one product (an HMS, ERP, GitLab-style platform) into hundreds of isolated customer environments. Each deployment breaks alone, logs are siloed and often can't be shared for privacy/security, so the same incident gets re-diagnosed at Site A, then B, then C. Support cost and MTTR grow with the fleet, and hard-won fixes never travel. The buyers are vendors of on-prem/regulated software with large fleets — healthcare (Bahmni, Aarogya), financial, government — and their L2/L3 support and SRE engineers.
+
+**How it works.** Each deployment emits sanitized incident **fingerprints — never raw logs**. Elastic ML categorization strips the variable tokens into a symptom skeleton, Amazon Comprehend redacts residual PII (Aadhaar/health IDs), and only that derived, client-agnostic fingerprint crosses into the HIVE — a shared Elasticsearch index. Because it's the *same software* everywhere, the fields that enable cross-deployment matching (service names, error classes, versions, fault taxonomy) are exactly the ones with no PII, so the **sanitization boundary and the matching boundary are the same line** — you strip the private stuff at almost no cost to matching.
+
+**The loop.** Anomaly detected → Jira ticket created (carrying the fingerprint) → the agent searches the HIVE and posts ranked remediations + runbooks + confidence + why it matched as a Jira comment → the engineer can ping back with new info or correct it → on validation the ticket moves to COMPLETE → the agent creates or updates a runbook and links it to the anomaly, incident, remediation, ticket, and author. **Jira is the UI and the state machine** — no custom workflow engine. Every validated fix makes the next search better.
+
+**Blast radius.** Jira tickets and GitHub PRs/commits sync in via native Elastic connectors; each product version carries a date window, so the changes in that window are the prime suspects when a deployment on that version errors — linking an error back to the PR that likely caused it.
+
+**Two modes, one contract.** The HIVE is a store plus a set of MCP tools (match_incident, get_resolution, blast_radius, fleet_signal, check_version_risk, submit_outcome, upsert_runbook). Mode 1: the vendor brings their own Agent Builder + LLM and imports the HIVE as an MCP tool (best reasoning + privacy). Mode 2: we run a managed agent exposing one diagnose() call (turnkey, more generic). Same tools, two SKUs.
+
+**Stack.** Elastic is the brain — ML anomaly detection, CATEGORIZE, ES|QL, ELSER + hybrid RRF retrieval, Agent Builder + Workflows + MCP server, Kibana. AWS is edge/privacy/reasoning — Bedrock (Claude) as the model, Comprehend for redaction, IoT Core + Greengrass for fleet transport, AgentCore as the production scale-out. Suggestion-only, human-in-the-loop, ~$0.10 per incident and falling as the hive learns.
+
+Built for Forge the Future 2026 (Elastic × AWS).`
+  },
+  mudra:{
+    cat:'cat-hackathon',
+    catLabel:'iQOO City Battles, Chennai',
+    title:'MUDRA+',
+    sub:'Prototype built and completed on-device, on an iQOO 15 (Snapdragon 8 Elite Gen 5)',
+    tags:['MediaPipe Hand Landmarker','Qwen2.5-3B (GGUF)','llama.rn','Whisper tiny / whisper.rn','Kotlin / Room-SQLite','TypeScript'],
+    body:`MUDRA+ — a prototype on-device ASL input accelerator, built and completed at iQOO City Battles, Chennai, on an iQOO 15 (Snapdragon 8 Elite Gen 5).
+
+**What it does.** You sign two or three glosses into the phone camera. The app turns that short sequence into candidate English sentences, you pick one, and the phone speaks it — into a call over speakerphone, or through a LAN relay to a second phone. The other party's speech is transcribed back onto the screen. Everything runs locally: no server, no API key, no account.
+
+**The core idea — fewer signs per sentence.** Recognising an n-sign sentence goes roughly as pⁿ, so the architecture attacks both terms. It shortens the signed key (autocomplete fills the rest) and keeps per-sign accuracy high with a small, well-separated vocabulary plus a rejection threshold that answers UNKNOWN instead of guessing.
+
+**No trained classifier in the live path.** Detection is MediaPipe hand landmarks → normalise around the wrist → 72-feature vector → RMS distance against stored templates. Geometry, not inference — which is what lets a user record a new sign in about a second and use it on the next frame. A classifier's output layer is fixed to its training vocabulary and can't do that.
+
+**The LLM is small and rarely called.** Glosses aren't English, so a local Qwen2.5-3B (Q4_K_M, via llama.rn) composes candidate sentences — but only for sequences the app hasn't seen. An exact repeat returns from the translation memory in about a microsecond; a sequence whose candidates you've chosen from before returns from sentence memory. Fewer LLM invocations is also what keeps the phone cool under sustained camera load.
+
+**Models.** MediaPipe Hand Landmarker (the only vision model), Qwen2.5-3B-Instruct GGUF, Whisper tiny via whisper.rn for transcription, system TTS for output. The sign matcher itself is plain TypeScript — not a model.
+
+**Memory layer.** A standalone translation-memory engine implemented twice — Kotlin (Room/SQLite, ADPF CPU hints) and TypeScript (zero runtime deps). Exact lookup ~1 µs, flat from 1k to 50k entries; fuzzy retrieval via an IDF-weighted inverted index with order-aware rescoring. 46 tests across both ports.
+
+**Scope, honestly.** It's autocomplete for a signer's own recurring phrases, not a translation system — the person chooses a sentence before anything is spoken. Interpretation is a human skill and this doesn't attempt it. The demo vocabulary is five single-hand static poses plus whatever the user records; two-handed and motion signs aren't implemented. Every figure quoted is an engineering benchmark — the ergonomics are the next thing to evaluate, with signers.`
+  }
+};
+
+const csOverlay=document.getElementById('caseStudyOverlay');
+const csClose=document.getElementById('caseStudyClose');
+const csCat=document.getElementById('caseStudyCat');
+const csTitle=document.getElementById('caseStudyTitle');
+const csSub=document.getElementById('caseStudySub');
+const csBody=document.getElementById('caseStudyBody');
+const csTags=document.getElementById('caseStudyTags');
+
+function openCaseStudy(key){
+  const cs=caseStudies[key];
+  if(!cs)return;
+  csCat.className='proj-cat '+cs.cat;
+  csCat.textContent=cs.catLabel;
+  csTitle.textContent=cs.title;
+  csSub.textContent=cs.sub;
+  csBody.innerHTML=mdToHtml(cs.body);
+  csTags.innerHTML=cs.tags.map(t=>'<span class="proj-tag">'+t+'</span>').join('');
+  csOverlay.classList.add('open');
+  document.body.style.overflow='hidden';
+  csClose.focus();
+}
+function closeCaseStudy(){
+  csOverlay.classList.remove('open');
+  document.body.style.overflow='';
+}
+
+document.querySelectorAll('.proj[data-case]').forEach(card=>{
+  card.addEventListener('click',()=>openCaseStudy(card.dataset.case));
+  card.addEventListener('keydown',e=>{
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();openCaseStudy(card.dataset.case);}
+  });
+  card.setAttribute('tabindex','0');
+  card.setAttribute('role','button');
+});
+csClose.addEventListener('click',closeCaseStudy);
+csOverlay.addEventListener('click',e=>{if(e.target===csOverlay)closeCaseStudy();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&csOverlay.classList.contains('open'))closeCaseStudy();});
 </script>
 </body>
 </html>
