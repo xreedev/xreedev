@@ -100,6 +100,8 @@ h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute
 .proj-tag svg{width:10px;height:10px;flex-shrink:0}
 .proj a.proj-link{font-size:12px;text-decoration:none;color:var(--accent);font-weight:600;margin-top:auto}
 .proj a.proj-link:hover{text-decoration:underline}
+.proj-links-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:auto}
+.proj-links-row .proj-link{margin-top:0}
 .proj-img-ph{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent-soft),#fff)}
 .proj-img-ph svg{width:40px;height:40px;color:var(--accent);opacity:.75}
 .proj[data-case]{cursor:pointer;transition:border-color .15s,transform .15s}
@@ -123,6 +125,9 @@ h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute
 .modal-body p{color:var(--muted);font-size:13.5px;line-height:1.75;margin-bottom:14px}
 .modal-body strong{color:var(--text)}
 .modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.modal-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
+.modal-links a{font-size:13px;text-decoration:none;color:var(--accent);font-weight:600}
+.modal-links a:hover{text-decoration:underline}
 @media(max-width:640px){
   .modal-box{padding:28px 20px 32px}
   .modal-overlay{padding:24px 12px}
@@ -350,7 +355,11 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
             <div class="proj-tags">
               <span class="proj-tag">Elasticsearch</span><span class="proj-tag">Elastic ML</span><span class="proj-tag">AWS Bedrock</span><span class="proj-tag">Comprehend</span><span class="proj-tag">MCP</span><span class="proj-tag">Agentic AI</span>
             </div>
-            <span class="proj-link">Read case study →</span>
+            <div class="proj-links-row">
+              <span class="proj-link">Read case study →</span>
+              <a href="https://github.com/piesquarelabs" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
+              <a href="https://yourstory.com/2026/09/indias-top-ai-teams-set-battle-elastic-awss-forge-future-hackathon-finale" target="_blank" class="proj-link" onclick="event.stopPropagation()">Article →</a>
+            </div>
           </div>
         </div>
 
@@ -367,7 +376,10 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
             <div class="proj-tags">
               <span class="proj-tag">MediaPipe</span><span class="proj-tag">On-Device LLM</span><span class="proj-tag">Whisper</span><span class="proj-tag">Kotlin</span><span class="proj-tag">React Native</span>
             </div>
-            <span class="proj-link">Read case study →</span>
+            <div class="proj-links-row">
+              <span class="proj-link">Read case study →</span>
+              <a href="https://iqoo.reskilll.com/" target="_blank" class="proj-link" onclick="event.stopPropagation()">Article →</a>
+            </div>
           </div>
         </div>
 
@@ -570,6 +582,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
     <div class="modal-sub" id="caseStudySub"></div>
     <div class="modal-body" id="caseStudyBody"></div>
     <div class="modal-tags" id="caseStudyTags"></div>
+    <div class="modal-links" id="caseStudyLinks"></div>
   </div>
 </div>
 
@@ -695,6 +708,10 @@ const caseStudies={
     title:'PROBE',
     sub:'Elastic × AWS Forge the Future 2026, Bengaluru finale',
     tags:['Elasticsearch','Elastic ML','ELSER','Agent Builder','AWS Bedrock','Comprehend','IoT Core','Greengrass','AgentCore','MCP'],
+    links:[
+      {label:'GitHub — piesquarelabs →',href:'https://github.com/piesquarelabs'},
+      {label:'Article — YourStory →',href:'https://yourstory.com/2026/09/indias-top-ai-teams-set-battle-elastic-awss-forge-future-hackathon-finale'}
+    ],
     body:`PROBE is a privacy-safe **collective operational memory** for software vendors — a shared "HIVE" that learns incident→fix patterns across a vendor's entire deployment fleet, so the 500th site never rediscovers a problem already solved at the first.
 
 **The problem.** A vendor ships one product (an HMS, ERP, GitLab-style platform) into hundreds of isolated customer environments. Each deployment breaks alone, logs are siloed and often can't be shared for privacy/security, so the same incident gets re-diagnosed at Site A, then B, then C. Support cost and MTTR grow with the fleet, and hard-won fixes never travel. The buyers are vendors of on-prem/regulated software with large fleets — healthcare (Bahmni, Aarogya), financial, government — and their L2/L3 support and SRE engineers.
@@ -717,6 +734,9 @@ Built for Forge the Future 2026 (Elastic × AWS).`
     title:'MUDRA+',
     sub:'Prototype built and completed on-device, on an iQOO 15 (Snapdragon 8 Elite Gen 5)',
     tags:['MediaPipe Hand Landmarker','Qwen2.5-3B (GGUF)','llama.rn','Whisper tiny / whisper.rn','Kotlin / Room-SQLite','TypeScript'],
+    links:[
+      {label:'Article — iQOO Reskilll →',href:'https://iqoo.reskilll.com/'}
+    ],
     body:`MUDRA+ — a prototype on-device ASL input accelerator, built and completed at iQOO City Battles, Chennai, on an iQOO 15 (Snapdragon 8 Elite Gen 5).
 
 **What it does.** You sign two or three glosses into the phone camera. The app turns that short sequence into candidate English sentences, you pick one, and the phone speaks it — into a call over speakerphone, or through a LAN relay to a second phone. The other party's speech is transcribed back onto the screen. Everything runs locally: no server, no API key, no account.
@@ -742,6 +762,7 @@ const csTitle=document.getElementById('caseStudyTitle');
 const csSub=document.getElementById('caseStudySub');
 const csBody=document.getElementById('caseStudyBody');
 const csTags=document.getElementById('caseStudyTags');
+const csLinks=document.getElementById('caseStudyLinks');
 
 function openCaseStudy(key){
   const cs=caseStudies[key];
@@ -752,6 +773,7 @@ function openCaseStudy(key){
   csSub.textContent=cs.sub;
   csBody.innerHTML=mdToHtml(cs.body);
   csTags.innerHTML=cs.tags.map(t=>'<span class="proj-tag">'+t+'</span>').join('');
+  csLinks.innerHTML=(cs.links||[]).map(l=>'<a href="'+l.href+'" target="_blank" rel="noopener">'+l.label+'</a>').join('');
   csOverlay.classList.add('open');
   document.body.style.overflow='hidden';
   csClose.focus();
