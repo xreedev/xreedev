@@ -91,6 +91,7 @@ h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute
 .proj-cat.cat-self{color:#166534;background:#e6f7ec}
 .proj-cat.cat-college{color:#1d4ed8;background:#e9eefb}
 .proj-cat.cat-hackathon{color:#b45309;background:#fdf0dc}
+.proj-cat.cat-pisquare{color:#0f766e;background:#e6f6f3}
 .proj-cat.cat-simplogics{color:#c2410c;background:#fdece3}
 .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
 .proj-title{font-size:15px;font-weight:600}
@@ -105,34 +106,13 @@ h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute
 .proj-links-row .proj-link{margin-top:0}
 .proj-img-ph{width:100%;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent-soft),#fff)}
 .proj-img-ph svg{width:40px;height:40px;color:var(--accent);opacity:.75}
-.proj[data-case]{cursor:pointer;transition:border-color .15s,transform .15s}
-.proj[data-case]:hover{border-color:var(--accent);transform:translateY(-2px)}
+.proj[data-page]{cursor:pointer;transition:border-color .15s,transform .15s}
+.proj[data-page]:hover{border-color:var(--accent);transform:translateY(-2px)}
 .proj-case-hint{font-size:11px;color:var(--muted);margin-top:6px}
 
 /* REVEAL ANIMATIONS */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
 .reveal.in-view{opacity:1;transform:translateY(0)}
-
-/* CASE STUDY MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(15,16,18,.6);display:none;align-items:flex-start;justify-content:center;padding:60px 20px;z-index:100;overflow-y:auto}
-.modal-overlay.open{display:flex}
-.modal-box{background:var(--surface);border-radius:12px;max-width:720px;width:100%;padding:36px 32px 40px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:modalIn .22s ease}
-@keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-.modal-close{position:absolute;top:18px;right:18px;background:none;border:none;cursor:pointer;color:var(--muted);padding:6px;border-radius:6px;transition:color .15s,background .15s}
-.modal-close:hover{color:var(--text);background:var(--accent-soft)}
-.modal-close svg{width:20px;height:20px;display:block}
-.modal-title{font-size:21px;font-weight:700;margin:10px 0 4px}
-.modal-sub{font-size:13px;color:var(--muted);margin-bottom:18px}
-.modal-body p{color:var(--muted);font-size:13.5px;line-height:1.75;margin-bottom:14px}
-.modal-body strong{color:var(--text)}
-.modal-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
-.modal-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;padding-top:16px;border-top:1px solid var(--border)}
-.modal-links a{font-size:13px;text-decoration:none;color:var(--accent);font-weight:600}
-.modal-links a:hover{text-decoration:underline}
-@media(max-width:640px){
-  .modal-box{padding:28px 20px 32px}
-  .modal-overlay{padding:24px 12px}
-}
 
 /* CONTACT */
 #contact p{color:var(--muted);max-width:56ch;margin-bottom:20px}
@@ -343,7 +323,7 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
       <h2>Projects</h2>
 
       <div class="proj-grid">
-        <div class="proj reveal" id="proj-probe" data-case="probe">
+        <div class="proj reveal" id="proj-probe" data-page="projects/probe.html">
           <img class="proj-img proj-img-diagram" src="images/probe_architecture.webp" alt="PROBE agentic SRE architecture diagram" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-hackathon">Forge the Future 2026 — Finalist</span>
@@ -355,14 +335,14 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
               <span class="proj-tag">Elasticsearch</span><span class="proj-tag">Elastic ML</span><span class="proj-tag">AWS Bedrock</span><span class="proj-tag">Comprehend</span><span class="proj-tag">MCP</span><span class="proj-tag">Agentic AI</span>
             </div>
             <div class="proj-links-row">
-              <span class="proj-link">Read case study →</span>
-              <a href="https://github.com/PiSquareLabs/probe" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
+              <a href="projects/probe.html" class="proj-link" onclick="event.stopPropagation()">Architecture →</a>
+              <a href="https://github.com/PiSquareLabs/Probe" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
               <a href="https://yourstory.com/2026/09/indias-top-ai-teams-set-battle-elastic-awss-forge-future-hackathon-finale" target="_blank" class="proj-link" onclick="event.stopPropagation()">Article →</a>
             </div>
           </div>
         </div>
 
-        <div class="proj reveal" id="proj-mudra" data-case="mudra">
+        <div class="proj reveal" id="proj-mudra" data-page="projects/mudra.html">
           <img class="proj-img proj-img-diagram" src="images/mudra_architecture.webp" alt="MUDRA+ on-device system architecture diagram" loading="lazy">
           <div class="proj-body">
             <span class="proj-cat cat-hackathon">iQOO City Battles, Chennai</span>
@@ -374,9 +354,81 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
               <span class="proj-tag">MediaPipe</span><span class="proj-tag">On-Device LLM</span><span class="proj-tag">Whisper</span><span class="proj-tag">Kotlin</span><span class="proj-tag">React Native</span>
             </div>
             <div class="proj-links-row">
-              <span class="proj-link">Read case study →</span>
-              <a href="https://github.com/PiSquareLabs/mudra" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
+              <a href="projects/mudra.html" class="proj-link" onclick="event.stopPropagation()">Architecture →</a>
+              <a href="https://github.com/PiSquareLabs/Mudra" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
               <a href="https://iqoo.reskilll.com/" target="_blank" class="proj-link" onclick="event.stopPropagation()">Article →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj reveal" id="proj-pathshala" data-page="projects/pathshala.html">
+          <img class="proj-img proj-img-diagram" src="images/projects/pathshala-card.svg" alt="PathShala architecture diagram" loading="lazy">
+          <div class="proj-body">
+            <span class="proj-cat cat-pisquare">PiSquareLabs</span>
+            <div class="proj-head">
+              <span class="proj-title">PathShala</span>
+            </div>
+            <p>School-consolidation investigation tool for district education officers — compare receiving schools side by side, run eight schema-checked agents per candidate, and choose last. The LLM never produces numbers or approvals.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Vanilla JS</span><span class="proj-tag">SQLite (WASM)</span><span class="proj-tag">Gemini</span><span class="proj-tag">Agentic AI</span><span class="proj-tag">BM25</span>
+            </div>
+            <div class="proj-links-row">
+              <a href="projects/pathshala.html" class="proj-link" onclick="event.stopPropagation()">Architecture →</a>
+              <a href="https://github.com/PiSquareLabs/PathShala" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj reveal" id="proj-groundtruth" data-page="projects/groundtruth.html">
+          <img class="proj-img proj-img-diagram" src="images/projects/groundtruth-card.svg" alt="Ground Truth architecture diagram" loading="lazy">
+          <div class="proj-body">
+            <span class="proj-cat cat-hackathon">Code Cubicle 6.0</span>
+            <div class="proj-head">
+              <span class="proj-title">Ground Truth</span>
+            </div>
+            <p>AI-organized before/after field evidence and traceable impact reports for NGOs, built on Cloudinary — semantic search, human-confirmed pairs and a full provenance trail for every image.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Python</span><span class="proj-tag">Streamlit</span><span class="proj-tag">Cloudinary</span><span class="proj-tag">Gemini</span><span class="proj-tag">Embeddings</span>
+            </div>
+            <div class="proj-links-row">
+              <a href="projects/groundtruth.html" class="proj-link" onclick="event.stopPropagation()">Architecture →</a>
+              <a href="https://github.com/PiSquareLabs/GroundTruth" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj reveal" id="proj-batchtrace" data-page="projects/batchtrace.html">
+          <img class="proj-img proj-img-diagram" src="images/projects/batchtrace-card.svg" alt="Bad Batch Tracer architecture diagram" loading="lazy">
+          <div class="proj-body">
+            <span class="proj-cat cat-hackathon">Snowflake CoCo CLI Hackathon 2026</span>
+            <div class="proj-head">
+              <span class="proj-title">Bad Batch Tracer</span>
+            </div>
+            <p>Matches India’s monthly CDSCO failed-batch alerts against hospital dispensing — including hand-typed and missing batch numbers — and lists exposed patients for clinical follow-up. Data layer built; Snowflake pipeline designed.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Snowflake</span><span class="proj-tag">Cortex AI</span><span class="proj-tag">Python</span><span class="proj-tag">Synthetic Data</span>
+            </div>
+            <div class="proj-links-row">
+              <a href="projects/batchtrace.html" class="proj-link" onclick="event.stopPropagation()">Architecture →</a>
+              <a href="https://github.com/PiSquareLabs/BatchTrace" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="proj reveal" id="proj-pocketforge" data-page="projects/pocketforge.html">
+          <img class="proj-img proj-img-diagram" src="images/projects/pocketforge-card.svg" alt="PocketForge architecture diagram" loading="lazy">
+          <div class="proj-body">
+            <span class="proj-cat cat-hackathon">Hackathon PoC</span>
+            <div class="proj-head">
+              <span class="proj-title">PocketForge</span>
+            </div>
+            <p>Describe an app, import your files, get an installable offline PWA. A service worker serves LLM-generated apps from IndexedDB so Chrome can install them — no backend of its own.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">PWA</span><span class="proj-tag">Service Worker</span><span class="proj-tag">IndexedDB</span><span class="proj-tag">LLM API</span><span class="proj-tag">JavaScript</span>
+            </div>
+            <div class="proj-links-row">
+              <a href="projects/pocketforge.html" class="proj-link" onclick="event.stopPropagation()">Architecture →</a>
+              <a href="https://github.com/PiSquareLabs/PocketForge" target="_blank" class="proj-link" onclick="event.stopPropagation()">GitHub →</a>
             </div>
           </div>
         </div>
@@ -570,20 +622,6 @@ footer{border-top:1px solid var(--border);padding-top:24px;margin-top:56px;font-
   </main>
 </div>
 
-<div class="modal-overlay" id="caseStudyOverlay" role="dialog" aria-modal="true" aria-labelledby="caseStudyTitle">
-  <div class="modal-box">
-    <button class="modal-close" id="caseStudyClose" aria-label="Close case study">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-    <span class="proj-cat" id="caseStudyCat"></span>
-    <div class="modal-title" id="caseStudyTitle"></div>
-    <div class="modal-sub" id="caseStudySub"></div>
-    <div class="modal-body" id="caseStudyBody"></div>
-    <div class="modal-tags" id="caseStudyTags"></div>
-    <div class="modal-links" id="caseStudyLinks"></div>
-  </div>
-</div>
-
 <script>
 const sections=document.querySelectorAll('main section[id]');
 const navLinks=document.querySelectorAll('.main-nav a, .mobile-menu nav a');
@@ -689,110 +727,14 @@ if('IntersectionObserver' in window){
   revealEls.forEach(el=>el.classList.add('in-view'));
 }
 
-// CASE STUDIES
-function mdToHtml(md){
-  return md.trim().split(/\n\s*\n/).map(block=>{
-    const escaped=block.trim()
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
-    return '<p>'+escaped+'</p>';
-  }).join('');
-}
-
-const caseStudies={
-  probe:{
-    cat:'cat-hackathon',
-    catLabel:'Forge the Future 2026 — Finalist',
-    title:'PROBE',
-    sub:'Elastic × AWS Forge the Future 2026, Bengaluru finale',
-    tags:['Elasticsearch','Elastic ML','ELSER','Agent Builder','AWS Bedrock','Comprehend','IoT Core','Greengrass','AgentCore','MCP'],
-    links:[
-      {label:'GitHub — PiSquareLabs/probe →',href:'https://github.com/PiSquareLabs/probe'},
-      {label:'Article — YourStory →',href:'https://yourstory.com/2026/09/indias-top-ai-teams-set-battle-elastic-awss-forge-future-hackathon-finale'}
-    ],
-    body:`PROBE is a privacy-safe **collective operational memory** for software vendors — a shared "HIVE" that learns incident→fix patterns across a vendor's entire deployment fleet, so the 500th site never rediscovers a problem already solved at the first.
-
-**The problem.** A vendor ships one product (an HMS, ERP, GitLab-style platform) into hundreds of isolated customer environments. Each deployment breaks alone, logs are siloed and often can't be shared for privacy/security, so the same incident gets re-diagnosed at Site A, then B, then C. Support cost and MTTR grow with the fleet, and hard-won fixes never travel. The buyers are vendors of on-prem/regulated software with large fleets — healthcare (Bahmni, Aarogya), financial, government — and their L2/L3 support and SRE engineers.
-
-**How it works.** Each deployment emits sanitized incident **fingerprints — never raw logs**. Elastic ML categorization strips the variable tokens into a symptom skeleton, Amazon Comprehend redacts residual PII (Aadhaar/health IDs), and only that derived, client-agnostic fingerprint crosses into the HIVE — a shared Elasticsearch index. Because it's the *same software* everywhere, the fields that enable cross-deployment matching (service names, error classes, versions, fault taxonomy) are exactly the ones with no PII, so the **sanitization boundary and the matching boundary are the same line** — you strip the private stuff at almost no cost to matching.
-
-**The loop.** Anomaly detected → Jira ticket created (carrying the fingerprint) → the agent searches the HIVE and posts ranked remediations + runbooks + confidence + why it matched as a Jira comment → the engineer can ping back with new info or correct it → on validation the ticket moves to COMPLETE → the agent creates or updates a runbook and links it to the anomaly, incident, remediation, ticket, and author. **Jira is the UI and the state machine** — no custom workflow engine. Every validated fix makes the next search better.
-
-**Blast radius.** Jira tickets and GitHub PRs/commits sync in via native Elastic connectors; each product version carries a date window, so the changes in that window are the prime suspects when a deployment on that version errors — linking an error back to the PR that likely caused it.
-
-**Two modes, one contract.** The HIVE is a store plus a set of MCP tools (match_incident, get_resolution, blast_radius, fleet_signal, check_version_risk, submit_outcome, upsert_runbook). Mode 1: the vendor brings their own Agent Builder + LLM and imports the HIVE as an MCP tool (best reasoning + privacy). Mode 2: we run a managed agent exposing one diagnose() call (turnkey, more generic). Same tools, two SKUs.
-
-**Stack.** Elastic is the brain — ML anomaly detection, CATEGORIZE, ES|QL, ELSER + hybrid RRF retrieval, Agent Builder + Workflows + MCP server, Kibana. AWS is edge/privacy/reasoning — Bedrock (Claude) as the model, Comprehend for redaction, IoT Core + Greengrass for fleet transport, AgentCore as the production scale-out. Suggestion-only, human-in-the-loop, ~$0.10 per incident and falling as the hive learns.
-
-Built for Forge the Future 2026 (Elastic × AWS).`
-  },
-  mudra:{
-    cat:'cat-hackathon',
-    catLabel:'iQOO City Battles, Chennai',
-    title:'MUDRA+',
-    sub:'Prototype built and completed on-device, on an iQOO 15 (Snapdragon 8 Elite Gen 5)',
-    tags:['MediaPipe Hand Landmarker','Qwen2.5-3B (GGUF)','llama.rn','Whisper tiny / whisper.rn','Kotlin / Room-SQLite','TypeScript'],
-    links:[
-      {label:'GitHub — PiSquareLabs/mudra →',href:'https://github.com/PiSquareLabs/mudra'},
-      {label:'Article — iQOO Reskilll →',href:'https://iqoo.reskilll.com/'}
-    ],
-    body:`MUDRA+ — a prototype on-device ASL input accelerator, built and completed at iQOO City Battles, Chennai, on an iQOO 15 (Snapdragon 8 Elite Gen 5).
-
-**What it does.** You sign two or three glosses into the phone camera. The app turns that short sequence into candidate English sentences, you pick one, and the phone speaks it — into a call over speakerphone, or through a LAN relay to a second phone. The other party's speech is transcribed back onto the screen. Everything runs locally: no server, no API key, no account.
-
-**The core idea — fewer signs per sentence.** Recognising an n-sign sentence goes roughly as pⁿ, so the architecture attacks both terms. It shortens the signed key (autocomplete fills the rest) and keeps per-sign accuracy high with a small, well-separated vocabulary plus a rejection threshold that answers UNKNOWN instead of guessing.
-
-**No trained classifier in the live path.** Detection is MediaPipe hand landmarks → normalise around the wrist → 72-feature vector → RMS distance against stored templates. Geometry, not inference — which is what lets a user record a new sign in about a second and use it on the next frame. A classifier's output layer is fixed to its training vocabulary and can't do that.
-
-**The LLM is small and rarely called.** Glosses aren't English, so a local Qwen2.5-3B (Q4_K_M, via llama.rn) composes candidate sentences — but only for sequences the app hasn't seen. An exact repeat returns from the translation memory in about a microsecond; a sequence whose candidates you've chosen from before returns from sentence memory. Fewer LLM invocations is also what keeps the phone cool under sustained camera load.
-
-**Models.** MediaPipe Hand Landmarker (the only vision model), Qwen2.5-3B-Instruct GGUF, Whisper tiny via whisper.rn for transcription, system TTS for output. The sign matcher itself is plain TypeScript — not a model.
-
-**Memory layer.** A standalone translation-memory engine implemented twice — Kotlin (Room/SQLite, ADPF CPU hints) and TypeScript (zero runtime deps). Exact lookup ~1 µs, flat from 1k to 50k entries; fuzzy retrieval via an IDF-weighted inverted index with order-aware rescoring. 46 tests across both ports.
-
-**Scope, honestly.** It's autocomplete for a signer's own recurring phrases, not a translation system — the person chooses a sentence before anything is spoken. Interpretation is a human skill and this doesn't attempt it. The demo vocabulary is five single-hand static poses plus whatever the user records; two-handed and motion signs aren't implemented. Every figure quoted is an engineering benchmark — the ergonomics are the next thing to evaluate, with signers.`
-  }
-};
-
-const csOverlay=document.getElementById('caseStudyOverlay');
-const csClose=document.getElementById('caseStudyClose');
-const csCat=document.getElementById('caseStudyCat');
-const csTitle=document.getElementById('caseStudyTitle');
-const csSub=document.getElementById('caseStudySub');
-const csBody=document.getElementById('caseStudyBody');
-const csTags=document.getElementById('caseStudyTags');
-const csLinks=document.getElementById('caseStudyLinks');
-
-function openCaseStudy(key){
-  const cs=caseStudies[key];
-  if(!cs)return;
-  csCat.className='proj-cat '+cs.cat;
-  csCat.textContent=cs.catLabel;
-  csTitle.textContent=cs.title;
-  csSub.textContent=cs.sub;
-  csBody.innerHTML=mdToHtml(cs.body);
-  csTags.innerHTML=cs.tags.map(t=>'<span class="proj-tag">'+t+'</span>').join('');
-  csLinks.innerHTML=(cs.links||[]).map(l=>'<a href="'+l.href+'" target="_blank" rel="noopener">'+l.label+'</a>').join('');
-  csOverlay.classList.add('open');
-  document.body.style.overflow='hidden';
-  csClose.focus();
-}
-function closeCaseStudy(){
-  csOverlay.classList.remove('open');
-  document.body.style.overflow='';
-}
-
-document.querySelectorAll('.proj[data-case]').forEach(card=>{
-  card.addEventListener('click',()=>openCaseStudy(card.dataset.case));
-  card.addEventListener('keydown',e=>{
-    if(e.key==='Enter'||e.key===' '){e.preventDefault();openCaseStudy(card.dataset.case);}
-  });
+// PROJECT PAGES
+document.querySelectorAll('.proj[data-page]').forEach(card=>{
+  const go=()=>{location.href=card.dataset.page};
+  card.addEventListener('click',go);
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});
   card.setAttribute('tabindex','0');
-  card.setAttribute('role','button');
+  card.setAttribute('role','link');
 });
-csClose.addEventListener('click',closeCaseStudy);
-csOverlay.addEventListener('click',e=>{if(e.target===csOverlay)closeCaseStudy();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&csOverlay.classList.contains('open'))closeCaseStudy();});
 </script>
 </body>
 </html>
