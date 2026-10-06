@@ -29,3 +29,16 @@
 
 
 Feel free to check out my projects and contributions. 
+
+
+---
+
+## Robotics Learning Platform
+
+A self-contained, 6-month / 120-module robotics engineering course lives in [`learn/`](learn/index.html) (adapted from [How to Become a Robotics Engineer](https://technologiee.substack.com/p/how-to-become-a-robotics-engineer)). Open `learn/index.html` locally or via GitHub Pages at `/learn/`.
+
+- 24 weeks × 5 day-modules (4 learning days + 1 build day) - finish as many per day as you like
+- Dashboard with progress ring, pace tracking, streaks and activity heatmap
+- Per-module task checklists, resources, study timer, Markdown notes and file uploads
+- Notebook, file library, `Ctrl+K` search, dark mode, JSON backup/restore
+- No build step, no server: progress and files stay in your browser (localStorage + IndexedDB)
